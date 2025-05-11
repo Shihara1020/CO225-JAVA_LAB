@@ -14,7 +14,7 @@ public class Main3 {
         System.out.print("The reverse of the String "+ instr+" is ");
 
         for(int i=Strlen-1;i>=0;--i){
-            System.out.printf("%s",instr[i]);
+            System.out.printf("%c",instr.charAt(i));
         }
 
 
