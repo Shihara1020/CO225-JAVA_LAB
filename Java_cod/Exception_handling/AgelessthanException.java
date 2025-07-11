@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+public class AgelessthanException extends  Exception {
+    public AgelessthanException(String message){
+        super(message);
+    }
 
-public class AgelessthanException {
 }
