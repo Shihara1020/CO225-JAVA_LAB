@@ -1,52 +1,53 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Mainapp{
     public static void main(String[] args){
         final int SENTINEL=-1;
         final int MAX_SIZE=100;
 
-        Scanner in =new Scanner(System.in);
-        int[] input= new int[MAX_SIZE];
-        int count=0;
+        Scanner in = new Scanner(System.in);
+        try {
+            int[] input = new int[MAX_SIZE];
+            int count = 0;
 
-        //read up to 100 positive integers
-        System.out.print("Enter a positive integer(or -1 to end): ");
+            //read up to 100 positive integers
+            System.out.print("Enter a positive integer(or -1 to end): ");
 
-        int number=in.nextInt();
-        while(number!=SENTINEL && count < MAX_SIZE){
-            if(number>0){
-                input[count]=number;
-                count++;
+            int number = in.nextInt();
+            while (number != SENTINEL && count < MAX_SIZE) {
+                if (number > 0) {
+                    input[count] = number;
+                    count++;
+                }
+                System.out.print("Enter a positive ineger(or -1 to end): ");
+                number = in.nextInt();
             }
-            System.out.print("Enter a positive ineger(or -1 to end): ");
-            number=in.nextInt();
-        }
 
-
-        //1.Filer numbers containing digit 8
-        int[] filltered=new int[count];
-        int filteredCount=0;
-        for(int i=0;i<count;i++){
-            if(hasEight(input[i])){
-                filltered[filteredCount]=input[i];
-                filteredCount++;
+            //1.Filer numbers containing digit 8
+            int[] filltered = new int[count];
+            int filteredCount = 0;
+            for (int i = 0; i < count; i++) {
+                if (hasEight(input[i])) {
+                    filltered[filteredCount] = input[i];
+                    filteredCount++;
+                }
             }
+
+            // 2. Compute sum
+            int sum = 0;
+            for (int i = 0; i < filteredCount; i++) {
+                sum += filltered[i];
+            }
+            System.out.println("Sum of those numbers is " + sum);
+
+            // 3. Sort filtered number is descending order
+            sortDescending(filltered, filteredCount);
+
+            // 4. Print the finaln array and sum
+            printArray(filltered, filteredCount);
+        } finally {
+            in.close();
         }
-
-        // 2. Compute sum
-        int sum=0;
-        for(int i=0;i<filteredCount;i++){
-            sum+=filltered[i];
-        }
-        System.out.println("Sum of those numbers is "+sum);
-
-
-        // 3. Sort filtered number is descending order
-        sortDescending(filltered,filteredCount);
-
-        // 4. Print the finaln array and sum
-        printArray(filltered,filteredCount);
-
 
     }
 
